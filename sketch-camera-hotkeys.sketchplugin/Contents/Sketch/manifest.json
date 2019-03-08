@@ -1,0 +1,23 @@
+{
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "icon": "icon.png",
+  "commands": [
+    {
+      "name": "my-command",
+      "identifier": "sketch-camera-hotkeys.my-command-identifier",
+      "script": "my-command.js"
+    }
+  ],
+  "menu": {
+    "title": "sketch-camera-hotkeys",
+    "items": [
+      "sketch-camera-hotkeys.my-command-identifier"
+    ]
+  },
+  "version": "0.1.0",
+  "name": "sketch-camera-hotkeys",
+  "identifier": "sketch-camera-hotkeys",
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml"
+}
