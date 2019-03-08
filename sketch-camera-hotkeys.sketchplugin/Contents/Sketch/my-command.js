@@ -95,10 +95,29 @@ var exports =
 /*!***************************!*\
   !*** ./src/my-command.js ***!
   \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+ // documentation: https://developer.sketchapp.com/reference/api/
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("It's alive 🙌");
+});
+
+/***/ }),
+
+/***/ "sketch":
+/*!*************************!*\
+  !*** external "sketch" ***!
+  \*************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/@skpm/builder/node_modules/babel-loader/lib/index.js):\nError: [BABEL] /Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/src/my-command.js: Cannot find module '@babel/plugin-syntax-async-generators' from '/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys'\n    at Function.module.exports [as sync] (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/node_modules/resolve/lib/sync.js:58:15)\n    at resolveStandardizedName (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/files/plugins.js:101:31)\n    at resolvePlugin (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/files/plugins.js:54:10)\n    at loadPlugin (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/files/plugins.js:62:20)\n    at createDescriptor (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/config-descriptors.js:154:9)\n    at items.map (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/config-descriptors.js:109:50)\n    at Array.map (<anonymous>)\n    at createDescriptors (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/config-descriptors.js:109:29)\n    at createPluginDescriptors (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/config-descriptors.js:105:10)\n    at plugins (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/config-descriptors.js:40:19)\n    at mergeChainOpts (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/config-chain.js:319:26)\n    at /Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/config-chain.js:283:7\n    at buildPresetChain (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/config-chain.js:45:17)\n    at loadPresetDescriptor (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/full.js:235:44)\n    at config.presets.reduce (/Users/jayhxmo/Workspace/sketch-camera-hotkeys/sketch-camera-hotkeys/node_modules/@skpm/builder/node_modules/@babel/core/lib/config/full.js:77:21)\n    at Array.reduce (<anonymous>)");
+module.exports = require("sketch");
 
 /***/ })
 

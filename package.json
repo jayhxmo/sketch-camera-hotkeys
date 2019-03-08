@@ -19,6 +19,10 @@
     "postinstall": "npm run build && skpm-link"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.5.11"
+    "@babel/plugin-syntax-async-generators": "^7.2.0",
+    "@skpm/builder": "^0.5.16"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.4"
   }
 }
