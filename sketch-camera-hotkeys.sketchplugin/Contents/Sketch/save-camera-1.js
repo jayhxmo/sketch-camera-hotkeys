@@ -86,19 +86,38 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/my-command.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/save-camera-1.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/my-command.js":
-/*!***************************!*\
-  !*** ./src/my-command.js ***!
-  \***************************/
+/***/ "./src/save-camera-1.js":
+/*!******************************!*\
+  !*** ./src/save-camera-1.js ***!
+  \******************************/
 /*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+ // documentation: https://developer.sketchapp.com/reference/api/
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("camera hotkey saved 1 !");
+});
+
+/***/ }),
+
+/***/ "sketch":
+/*!*************************!*\
+  !*** external "sketch" ***!
+  \*************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/@skpm/builder/node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/jayhxmo/Workspace/sketch-camera-hotkeys/src/my-command.js'");
+module.exports = require("sketch");
 
 /***/ })
 
@@ -111,4 +130,4 @@ throw new Error("Module build failed (from ./node_modules/@skpm/builder/node_mod
 }
 that['onRun'] = __skpm_run.bind(this, 'default')
 
-//# sourceMappingURL=my-command.js.map
+//# sourceMappingURL=save-camera-1.js.map

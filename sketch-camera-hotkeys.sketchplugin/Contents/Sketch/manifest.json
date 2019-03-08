@@ -4,15 +4,23 @@
   "icon": "icon.png",
   "commands": [
     {
-      "name": "my-command",
-      "identifier": "sketch-camera-hotkeys.my-command-identifier",
-      "script": "my-command.js"
+      "name": "Create Camera Location 1",
+      "identifier": "sketch-camera-hotkeys.create-camera-location-1-identifier",
+      "script": "create-camera-location-1.js",
+      "shortcut": "cmd shift 1"
+    },
+    {
+      "name": "Jump to Camera Location 1",
+      "identifier": "sketch-camera-hotkeys.jump-to-camera-location-1-identifier",
+      "script": "jump-to-camera-location-1.js",
+      "shortcut": "ctrl 1"
     }
   ],
   "menu": {
     "title": "sketch-camera-hotkeys",
     "items": [
-      "sketch-camera-hotkeys.my-command-identifier"
+      "sketch-camera-hotkeys.create-camera-location-1-identifier",
+      "sketch-camera-hotkeys.jump-to-camera-location-1-identifier"
     ]
   },
   "version": "0.1.0",

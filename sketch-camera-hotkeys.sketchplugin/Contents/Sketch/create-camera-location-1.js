@@ -86,19 +86,62 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/my-command.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/create-camera-location-1.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/my-command.js":
-/*!***************************!*\
-  !*** ./src/my-command.js ***!
-  \***************************/
+/***/ "./src/create-camera-location-1.js":
+/*!*****************************************!*\
+  !*** ./src/create-camera-location-1.js ***!
+  \*****************************************/
 /*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var getCurrentView = function getCurrentView(doc) {
+  if (doc.currentView) {
+    return doc.currentView();
+  } else if (doc.contentDrawView) {
+    return doc.contentDrawView();
+  }
+
+  log('ERROR: Can not get currentView');
+  return null;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (function (context) {
+  var camera = getCurrentView(context.document).visibleContentRect();
+  log(camera);
+  log(sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings);
+  var midpointX = camera.size.width / 2 + camera.origin.x,
+      midpointY = camera.size.height / 2 + camera.origin.y,
+      zoomValue = context.document.zoomValue();
+  var location = {
+    x: midpointX,
+    y: midpointY,
+    zoom: zoomValue
+  };
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.setDocumentSettingForKey(context.document, 'camera-location-1', location); // log(sketch.Settings.settingForKey('camera-location-1'));
+
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message('Created Camera Location 1: ' + midpointX + ':' + midpointY);
+});
+
+/***/ }),
+
+/***/ "sketch":
+/*!*************************!*\
+  !*** external "sketch" ***!
+  \*************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/@skpm/builder/node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/jayhxmo/Workspace/sketch-camera-hotkeys/src/my-command.js'");
+module.exports = require("sketch");
 
 /***/ })
 
@@ -111,4 +154,4 @@ throw new Error("Module build failed (from ./node_modules/@skpm/builder/node_mod
 }
 that['onRun'] = __skpm_run.bind(this, 'default')
 
-//# sourceMappingURL=my-command.js.map
+//# sourceMappingURL=create-camera-location-1.js.map
