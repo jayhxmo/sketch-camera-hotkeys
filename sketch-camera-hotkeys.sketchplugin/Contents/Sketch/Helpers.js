@@ -86,7 +86,7 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/jump-to-camera-location-1.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/Helpers.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -112,60 +112,6 @@ var getCurrentView = function getCurrentView(doc) {
   return null;
 };
 
-/***/ }),
-
-/***/ "./src/jump-to-camera-location-1.js":
-/*!******************************************!*\
-  !*** ./src/jump-to-camera-location-1.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
-
-
-/* harmony default export */ __webpack_exports__["default"] = (function (context) {
-  var currentView = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.document); // Retrieve saved data
-
-  var camera = currentView.visibleContentRect(),
-      cameraSave = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.documentSettingForKey(context.document, 'camera-location-1'),
-      cameraZoom = context.document.zoomValue(); // Set page before camera position
-
-  var pages = context.document.pages();
-
-  for (var i = 0; i < pages.length; i++) {
-    if (cameraSave.pageID == pages[i].objectID()) {
-      log("Page Index ".concat(i, " with ID ").concat(pages[i].objectID()));
-      context.document.setCurrentPage(pages[i]);
-      break;
-    }
-  } // Calculate to make sure responsiveness and zoom settings
-
-
-  var newWidth = camera.size.width / cameraSave.zoom * cameraZoom,
-      newHeight = camera.size.height / cameraSave.zoom * cameraZoom; // Set object with camera position
-
-  var cameraDest = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Rectangle(cameraSave.x - newWidth / 2, cameraSave.y - newHeight / 2, newWidth, newHeight).asCGRect();
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message('Jumped to Camera Location 1'); // sketch.UI.message(`${cameraSave.x - camera.size.width / 2} : ${cameraSave.y - camera.size.height / 2}`);
-
-  currentView.zoomToFitRect(cameraDest);
-});
-
-/***/ }),
-
-/***/ "sketch":
-/*!*************************!*\
-  !*** external "sketch" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("sketch");
-
 /***/ })
 
 /******/ });
@@ -177,4 +123,4 @@ module.exports = require("sketch");
 }
 that['onRun'] = __skpm_run.bind(this, 'default')
 
-//# sourceMappingURL=jump-to-camera-location-1.js.map
+//# sourceMappingURL=Helpers.js.map

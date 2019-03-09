@@ -91,19 +91,16 @@ var exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/create-camera-location-1.js":
-/*!*****************************************!*\
-  !*** ./src/create-camera-location-1.js ***!
-  \*****************************************/
-/*! exports provided: default */
+/***/ "./src/Helpers.js":
+/*!************************!*\
+  !*** ./src/Helpers.js ***!
+  \************************/
+/*! exports provided: getCurrentView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
-
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentView", function() { return getCurrentView; });
 var getCurrentView = function getCurrentView(doc) {
   if (doc.currentView) {
     return doc.currentView();
@@ -115,10 +112,24 @@ var getCurrentView = function getCurrentView(doc) {
   return null;
 };
 
+/***/ }),
+
+/***/ "./src/create-camera-location-1.js":
+/*!*****************************************!*\
+  !*** ./src/create-camera-location-1.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
+
+
 /* harmony default export */ __webpack_exports__["default"] = (function (context) {
-  var camera = getCurrentView(context.document).visibleContentRect();
-  log(camera);
-  log(sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings);
+  var camera = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.document).visibleContentRect();
   var midpointX = camera.size.width / 2 + camera.origin.x,
       midpointY = camera.size.height / 2 + camera.origin.y,
       zoomValue = context.document.zoomValue();
@@ -126,10 +137,10 @@ var getCurrentView = function getCurrentView(doc) {
     x: midpointX,
     y: midpointY,
     zoom: zoomValue,
-    width: camera.size.width / 2
+    width: camera.size.width / 2,
+    pageID: context.document.documentData().currentPage().objectID()
   };
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.setDocumentSettingForKey(context.document, 'camera-location-1', location); // log(sketch.Settings.settingForKey('camera-location-1'));
-
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.setDocumentSettingForKey(context.document, 'camera-location-1', location);
   sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message('Created Camera Location 1: ' + midpointX + ':' + midpointY);
 });
 

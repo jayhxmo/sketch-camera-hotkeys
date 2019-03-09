@@ -14,6 +14,9 @@
       "identifier": "sketch-camera-hotkeys.jump-to-camera-location-1-identifier",
       "script": "jump-to-camera-location-1.js",
       "shortcut": "ctrl 1"
+    },
+    {
+      "script": "Helpers.js"
     }
   ],
   "menu": {
