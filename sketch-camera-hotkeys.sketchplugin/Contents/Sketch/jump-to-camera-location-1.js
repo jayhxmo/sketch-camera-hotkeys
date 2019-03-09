@@ -134,26 +134,31 @@ var JumpToCamera = function JumpToCamera(context, index) {
 
   var camera = currentView.visibleContentRect(),
       cameraSave = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.documentSettingForKey(context.document, "camera-location-".concat(index)),
-      cameraZoom = context.document.zoomValue(); // Set page before camera position
+      cameraZoom = context.document.zoomValue();
 
-  var pages = context.document.pages();
+  if (cameraSave == null) {
+    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Camera Location ".concat(index, " has not been created"));
+  } else {
+    // Set page before camera position
+    var pages = context.document.pages();
 
-  for (var i = 0; i < pages.length; i++) {
-    if (cameraSave.pageID == pages[i].objectID()) {
-      log("Page Index ".concat(i, " with ID ").concat(pages[i].objectID()));
-      context.document.setCurrentPage(pages[i]);
-      break;
-    }
-  } // Calculate to make sure responsiveness and zoom settings
+    for (var i = 0; i < pages.length; i++) {
+      if (cameraSave.pageID == pages[i].objectID()) {
+        // log(`Page Index ${i} with ID ${pages[i].objectID()}`);
+        context.document.setCurrentPage(pages[i]);
+        break;
+      }
+    } // Calculate to make sure responsiveness and zoom settings
 
 
-  var newWidth = camera.size.width / cameraSave.zoom * cameraZoom,
-      newHeight = camera.size.height / cameraSave.zoom * cameraZoom; // Set object with camera position
+    var newWidth = camera.size.width / cameraSave.zoom * cameraZoom,
+        newHeight = camera.size.height / cameraSave.zoom * cameraZoom; // Set object with camera position
 
-  var cameraDest = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Rectangle(cameraSave.x - newWidth / 2, cameraSave.y - newHeight / 2, newWidth, newHeight).asCGRect();
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Jumped to Camera Location ".concat(index)); // sketch.UI.message(`${cameraSave.x - camera.size.width / 2} : ${cameraSave.y - camera.size.height / 2}`);
+    var cameraDest = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Rectangle(cameraSave.x - newWidth / 2, cameraSave.y - newHeight / 2, newWidth, newHeight).asCGRect();
+    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Jumped to Camera Location ".concat(index)); // sketch.UI.message(`${cameraSave.x - camera.size.width / 2} : ${cameraSave.y - camera.size.height / 2}`);
 
-  currentView.zoomToFitRect(cameraDest);
+    currentView.zoomToFitRect(cameraDest);
+  }
 };
 
 /***/ }),
