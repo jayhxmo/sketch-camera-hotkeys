@@ -1,0 +1,3 @@
+#!/bin/bash
+node generate-manifest
+node generate-camera-files

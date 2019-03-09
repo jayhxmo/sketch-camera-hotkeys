@@ -86,10 +86,43 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/create-camera-location-1.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/camera/create-camera-location-1.js");
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./src/CreateCamera.js":
+/*!*****************************!*\
+  !*** ./src/CreateCamera.js ***!
+  \*****************************/
+/*! exports provided: CreateCamera */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateCamera", function() { return CreateCamera; });
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
+
+
+var CreateCamera = function CreateCamera(context, index) {
+  var camera = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.document).visibleContentRect();
+  var midpointX = camera.size.width / 2 + camera.origin.x,
+      midpointY = camera.size.height / 2 + camera.origin.y,
+      zoomValue = context.document.zoomValue();
+  var location = {
+    x: midpointX,
+    y: midpointY,
+    zoom: zoomValue,
+    width: camera.size.width / 2,
+    pageID: context.document.documentData().currentPage().objectID()
+  };
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.setDocumentSettingForKey(context.document, "camera-location-".concat(index), location);
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Created Camera Location ".concat(index));
+};
+
+/***/ }),
 
 /***/ "./src/Helpers.js":
 /*!************************!*\
@@ -114,34 +147,19 @@ var getCurrentView = function getCurrentView(doc) {
 
 /***/ }),
 
-/***/ "./src/create-camera-location-1.js":
-/*!*****************************************!*\
-  !*** ./src/create-camera-location-1.js ***!
-  \*****************************************/
+/***/ "./src/camera/create-camera-location-1.js":
+/*!************************************************!*\
+  !*** ./src/camera/create-camera-location-1.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
-
+/* harmony import */ var _CreateCamera__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../CreateCamera */ "./src/CreateCamera.js");
 
 /* harmony default export */ __webpack_exports__["default"] = (function (context) {
-  var camera = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.document).visibleContentRect();
-  var midpointX = camera.size.width / 2 + camera.origin.x,
-      midpointY = camera.size.height / 2 + camera.origin.y,
-      zoomValue = context.document.zoomValue();
-  var location = {
-    x: midpointX,
-    y: midpointY,
-    zoom: zoomValue,
-    width: camera.size.width / 2,
-    pageID: context.document.documentData().currentPage().objectID()
-  };
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.setDocumentSettingForKey(context.document, 'camera-location-1', location);
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message('Created Camera Location 1: ' + midpointX + ':' + midpointY);
+  Object(_CreateCamera__WEBPACK_IMPORTED_MODULE_0__["CreateCamera"])(context, 1);
 });
 
 /***/ }),

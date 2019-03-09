@@ -86,7 +86,7 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/camera/jump-to-camera-location-1.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/camera/jump-to-camera-location-4.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -158,9 +158,9 @@ var JumpToCamera = function JumpToCamera(context, index) {
 
 /***/ }),
 
-/***/ "./src/camera/jump-to-camera-location-1.js":
+/***/ "./src/camera/jump-to-camera-location-4.js":
 /*!*************************************************!*\
-  !*** ./src/camera/jump-to-camera-location-1.js ***!
+  !*** ./src/camera/jump-to-camera-location-4.js ***!
   \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -170,7 +170,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _JumpToCamera__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../JumpToCamera */ "./src/JumpToCamera.js");
 
 /* harmony default export */ __webpack_exports__["default"] = (function (context) {
-  Object(_JumpToCamera__WEBPACK_IMPORTED_MODULE_0__["JumpToCamera"])(context, 1);
+  Object(_JumpToCamera__WEBPACK_IMPORTED_MODULE_0__["JumpToCamera"])(context, 4);
 });
 
 /***/ }),
@@ -195,4 +195,4 @@ module.exports = require("sketch");
 }
 that['onRun'] = __skpm_run.bind(this, 'default')
 
-//# sourceMappingURL=jump-to-camera-location-1.js.map
+//# sourceMappingURL=jump-to-camera-location-4.js.map

@@ -1,7 +1,7 @@
 import sketch from 'sketch';
 import * as Helpers from './Helpers';
 
-export default function(context) {
+export const CreateCamera = function(context, index) {
 	const camera = Helpers.getCurrentView(context.document).visibleContentRect();
 	const midpointX = camera.size.width / 2 + camera.origin.x,
 		midpointY = camera.size.height / 2 + camera.origin.y,
@@ -18,7 +18,7 @@ export default function(context) {
 			.objectID()
 	};
 
-	sketch.Settings.setDocumentSettingForKey(context.document, 'camera-location-1', location);
+	sketch.Settings.setDocumentSettingForKey(context.document, `camera-location-${index}`, location);
 
-	sketch.UI.message('Created Camera Location 1: ' + midpointX + ':' + midpointY);
-}
+	sketch.UI.message(`Created Camera Location ${index}`);
+};

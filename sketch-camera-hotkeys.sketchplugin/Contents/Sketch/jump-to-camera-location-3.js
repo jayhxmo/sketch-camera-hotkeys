@@ -86,19 +86,103 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/my-command.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/camera/jump-to-camera-location-3.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/my-command.js":
-/*!***************************!*\
-  !*** ./src/my-command.js ***!
-  \***************************/
+/***/ "./src/Helpers.js":
+/*!************************!*\
+  !*** ./src/Helpers.js ***!
+  \************************/
+/*! exports provided: getCurrentView */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentView", function() { return getCurrentView; });
+var getCurrentView = function getCurrentView(doc) {
+  if (doc.currentView) {
+    return doc.currentView();
+  } else if (doc.contentDrawView) {
+    return doc.contentDrawView();
+  }
+
+  log('ERROR: Can not get currentView');
+  return null;
+};
+
+/***/ }),
+
+/***/ "./src/JumpToCamera.js":
+/*!*****************************!*\
+  !*** ./src/JumpToCamera.js ***!
+  \*****************************/
+/*! exports provided: JumpToCamera */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JumpToCamera", function() { return JumpToCamera; });
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
+
+
+var JumpToCamera = function JumpToCamera(context, index) {
+  var currentView = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.document); // Retrieve saved data
+
+  var camera = currentView.visibleContentRect(),
+      cameraSave = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.documentSettingForKey(context.document, "camera-location-".concat(index)),
+      cameraZoom = context.document.zoomValue(); // Set page before camera position
+
+  var pages = context.document.pages();
+
+  for (var i = 0; i < pages.length; i++) {
+    if (cameraSave.pageID == pages[i].objectID()) {
+      log("Page Index ".concat(i, " with ID ").concat(pages[i].objectID()));
+      context.document.setCurrentPage(pages[i]);
+      break;
+    }
+  } // Calculate to make sure responsiveness and zoom settings
+
+
+  var newWidth = camera.size.width / cameraSave.zoom * cameraZoom,
+      newHeight = camera.size.height / cameraSave.zoom * cameraZoom; // Set object with camera position
+
+  var cameraDest = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Rectangle(cameraSave.x - newWidth / 2, cameraSave.y - newHeight / 2, newWidth, newHeight).asCGRect();
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Jumped to Camera Location ".concat(index)); // sketch.UI.message(`${cameraSave.x - camera.size.width / 2} : ${cameraSave.y - camera.size.height / 2}`);
+
+  currentView.zoomToFitRect(cameraDest);
+};
+
+/***/ }),
+
+/***/ "./src/camera/jump-to-camera-location-3.js":
+/*!*************************************************!*\
+  !*** ./src/camera/jump-to-camera-location-3.js ***!
+  \*************************************************/
 /*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _JumpToCamera__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../JumpToCamera */ "./src/JumpToCamera.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function (context) {
+  Object(_JumpToCamera__WEBPACK_IMPORTED_MODULE_0__["JumpToCamera"])(context, 3);
+});
+
+/***/ }),
+
+/***/ "sketch":
+/*!*************************!*\
+  !*** external "sketch" ***!
+  \*************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/@skpm/builder/node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/jayhxmo/Workspace/sketch-camera-hotkeys/src/my-command.js'");
+module.exports = require("sketch");
 
 /***/ })
 
@@ -111,4 +195,4 @@ throw new Error("Module build failed (from ./node_modules/@skpm/builder/node_mod
 }
 that['onRun'] = __skpm_run.bind(this, 'default')
 
-//# sourceMappingURL=my-command.js.map
+//# sourceMappingURL=jump-to-camera-location-3.js.map

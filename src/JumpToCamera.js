@@ -1,12 +1,12 @@
 import sketch from 'sketch';
 import * as Helpers from './Helpers';
 
-export default function(context) {
+export const JumpToCamera = function(context, index) {
 	const currentView = Helpers.getCurrentView(context.document);
 
 	// Retrieve saved data
 	const camera = currentView.visibleContentRect(),
-		cameraSave = sketch.Settings.documentSettingForKey(context.document, 'camera-location-1'),
+		cameraSave = sketch.Settings.documentSettingForKey(context.document, `camera-location-${index}`),
 		cameraZoom = context.document.zoomValue();
 
 	// Set page before camera position
@@ -31,7 +31,7 @@ export default function(context) {
 		newHeight
 	).asCGRect();
 
-	sketch.UI.message('Jumped to Camera Location 1');
+	sketch.UI.message(`Jumped to Camera Location ${index}`);
 	// sketch.UI.message(`${cameraSave.x - camera.size.width / 2} : ${cameraSave.y - camera.size.height / 2}`);
 	currentView.zoomToFitRect(cameraDest);
-}
+};
