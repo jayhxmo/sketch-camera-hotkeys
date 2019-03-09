@@ -103,8 +103,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
 
+
+var getCurrentView = function getCurrentView(doc) {
+  if (doc.currentView) {
+    return doc.currentView();
+  } else if (doc.contentDrawView) {
+    return doc.contentDrawView();
+  }
+
+  log('ERROR: Can not get currentView');
+  return null;
+};
+
 /* harmony default export */ __webpack_exports__["default"] = (function (context) {
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message(sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.documentSettingForKey(context.document, 'camera-location-1').x);
+  var camera = getCurrentView(context.document).visibleContentRect(),
+      cameraSave = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.documentSettingForKey(context.document, 'camera-location-1'),
+      cameraZoom = context.document.zoomValue();
+  var newWidth = camera.size.width / cameraSave.zoom * cameraZoom,
+      newHeight = camera.size.height / cameraSave.zoom * cameraZoom;
+  var cameraDest = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Rectangle(cameraSave.x - newWidth / 2, cameraSave.y - newHeight / 2, newWidth, newHeight).asCGRect();
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message('Jumped to Camera Location 1'); // sketch.UI.message(`${cameraSave.x - camera.size.width / 2} : ${cameraSave.y - camera.size.height / 2}`);
+
+  getCurrentView(context.document).zoomToFitRect(cameraDest);
 });
 
 /***/ }),

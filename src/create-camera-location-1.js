@@ -19,7 +19,7 @@ export default function(context) {
 		midpointY = camera.size.height / 2 + camera.origin.y,
 		zoomValue = context.document.zoomValue();
 
-	const location = { x: midpointX, y: midpointY, zoom: zoomValue };
+	const location = { x: midpointX, y: midpointY, zoom: zoomValue, width: camera.size.width / 2 };
 	sketch.Settings.setDocumentSettingForKey(context.document, 'camera-location-1', location);
 
 	// log(sketch.Settings.settingForKey('camera-location-1'));

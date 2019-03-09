@@ -125,7 +125,8 @@ var getCurrentView = function getCurrentView(doc) {
   var location = {
     x: midpointX,
     y: midpointY,
-    zoom: zoomValue
+    zoom: zoomValue,
+    width: camera.size.width / 2
   };
   sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.setDocumentSettingForKey(context.document, 'camera-location-1', location); // log(sketch.Settings.settingForKey('camera-location-1'));
 
