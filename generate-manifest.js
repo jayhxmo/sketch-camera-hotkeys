@@ -74,7 +74,7 @@ let manifestTemplate = {
   author: 'Jay Mo',
   authorEmail: 'jay@jaymo.io',
   homepage: 'https://github.com/jayhxmo/sketch-camera-hotkeys',
-  version: '1.0.0',
+  version: '1.0.1',
   identifier: 'io.jaymo.sketch-camera-hotkeys',
   compatibleVersion: 3,
   bundleVersion: 1,
