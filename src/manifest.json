@@ -1,1 +1,177 @@
-{"name":"Camera Hotkeys","description":"Navigate around and present more efficiently","author":"Jay Mo","authorEmail":"jay@jaymo.io","homepage":"https://github.com/jayhxmo/sketch-camera-hotkeys","version":"1.0","identifier":"io.jaymo.sketch-camera-hotkeys","compatibleVersion":3,"bundleVersion":1,"icon":"icon.png","commands":[{"script":"Helpers.js"},{"name":"Center Camera on Selection","identifier":"sketch-camera-hotkeys.center-camera-on-selection-identifier","script":"center-camera-on-selection.js","shortcut":"ctrl d"},{"name":"Follow Camera on Selection","identifier":"sketch-camera-hotkeys.follow-camera-on-selection-identifier","script":"follow-camera-on-selection.js","shortcut":"ctrl shift d","handlers":{"run":"default","actions":{"SelectionChanged.finish":"onSelectionChange"}}},{"name":"Create Camera Location 1","identifier":"sketch-camera-hotkeys.create-camera-location-1-identifier","script":"camera/create-camera-location-1.js","shortcut":"ctrl shift 1"},{"name":"Create Camera Location 2","identifier":"sketch-camera-hotkeys.create-camera-location-2-identifier","script":"camera/create-camera-location-2.js","shortcut":"ctrl shift 2"},{"name":"Create Camera Location 3","identifier":"sketch-camera-hotkeys.create-camera-location-3-identifier","script":"camera/create-camera-location-3.js","shortcut":"ctrl shift 3"},{"name":"Create Camera Location 4","identifier":"sketch-camera-hotkeys.create-camera-location-4-identifier","script":"camera/create-camera-location-4.js","shortcut":"ctrl shift 4"},{"name":"Create Camera Location 5","identifier":"sketch-camera-hotkeys.create-camera-location-5-identifier","script":"camera/create-camera-location-5.js","shortcut":"ctrl shift 5"},{"name":"Create Camera Location 6","identifier":"sketch-camera-hotkeys.create-camera-location-6-identifier","script":"camera/create-camera-location-6.js","shortcut":"ctrl shift 6"},{"name":"Create Camera Location 7","identifier":"sketch-camera-hotkeys.create-camera-location-7-identifier","script":"camera/create-camera-location-7.js","shortcut":"ctrl shift 7"},{"name":"Create Camera Location 8","identifier":"sketch-camera-hotkeys.create-camera-location-8-identifier","script":"camera/create-camera-location-8.js","shortcut":"ctrl shift 8"},{"name":"Create Camera Location 9","identifier":"sketch-camera-hotkeys.create-camera-location-9-identifier","script":"camera/create-camera-location-9.js","shortcut":"ctrl shift 9"},{"name":"Create Camera Location 10","identifier":"sketch-camera-hotkeys.create-camera-location-10-identifier","script":"camera/create-camera-location-10.js","shortcut":"ctrl shift 0"},{"name":"Jump to Camera Location 1","identifier":"sketch-camera-hotkeys.jump-to-camera-location-1-identifier","script":"camera/jump-to-camera-location-1.js","shortcut":"ctrl 1"},{"name":"Jump to Camera Location 2","identifier":"sketch-camera-hotkeys.jump-to-camera-location-2-identifier","script":"camera/jump-to-camera-location-2.js","shortcut":"ctrl 2"},{"name":"Jump to Camera Location 3","identifier":"sketch-camera-hotkeys.jump-to-camera-location-3-identifier","script":"camera/jump-to-camera-location-3.js","shortcut":"ctrl 3"},{"name":"Jump to Camera Location 4","identifier":"sketch-camera-hotkeys.jump-to-camera-location-4-identifier","script":"camera/jump-to-camera-location-4.js","shortcut":"ctrl 4"},{"name":"Jump to Camera Location 5","identifier":"sketch-camera-hotkeys.jump-to-camera-location-5-identifier","script":"camera/jump-to-camera-location-5.js","shortcut":"ctrl 5"},{"name":"Jump to Camera Location 6","identifier":"sketch-camera-hotkeys.jump-to-camera-location-6-identifier","script":"camera/jump-to-camera-location-6.js","shortcut":"ctrl 6"},{"name":"Jump to Camera Location 7","identifier":"sketch-camera-hotkeys.jump-to-camera-location-7-identifier","script":"camera/jump-to-camera-location-7.js","shortcut":"ctrl 7"},{"name":"Jump to Camera Location 8","identifier":"sketch-camera-hotkeys.jump-to-camera-location-8-identifier","script":"camera/jump-to-camera-location-8.js","shortcut":"ctrl 8"},{"name":"Jump to Camera Location 9","identifier":"sketch-camera-hotkeys.jump-to-camera-location-9-identifier","script":"camera/jump-to-camera-location-9.js","shortcut":"ctrl 9"},{"name":"Jump to Camera Location 10","identifier":"sketch-camera-hotkeys.jump-to-camera-location-10-identifier","script":"camera/jump-to-camera-location-10.js","shortcut":"ctrl 0"}],"menu":{"title":"Camera Hotkeys","items":["sketch-camera-hotkeys.center-camera-on-selection-identifier","sketch-camera-hotkeys.follow-camera-on-selection-identifier","-","sketch-camera-hotkeys.create-camera-location-1-identifier","sketch-camera-hotkeys.create-camera-location-2-identifier","sketch-camera-hotkeys.create-camera-location-3-identifier","sketch-camera-hotkeys.create-camera-location-4-identifier","sketch-camera-hotkeys.create-camera-location-5-identifier","sketch-camera-hotkeys.create-camera-location-6-identifier","sketch-camera-hotkeys.create-camera-location-7-identifier","sketch-camera-hotkeys.create-camera-location-8-identifier","sketch-camera-hotkeys.create-camera-location-9-identifier","sketch-camera-hotkeys.create-camera-location-10-identifier","-","sketch-camera-hotkeys.jump-to-camera-location-1-identifier","sketch-camera-hotkeys.jump-to-camera-location-2-identifier","sketch-camera-hotkeys.jump-to-camera-location-3-identifier","sketch-camera-hotkeys.jump-to-camera-location-4-identifier","sketch-camera-hotkeys.jump-to-camera-location-5-identifier","sketch-camera-hotkeys.jump-to-camera-location-6-identifier","sketch-camera-hotkeys.jump-to-camera-location-7-identifier","sketch-camera-hotkeys.jump-to-camera-location-8-identifier","sketch-camera-hotkeys.jump-to-camera-location-9-identifier","sketch-camera-hotkeys.jump-to-camera-location-10-identifier"]}}
+{
+	"name": "Camera Hotkeys",
+	"description": "Navigate around and present more efficiently",
+	"author": "Jay Mo",
+	"authorEmail": "jay@jaymo.io",
+	"homepage": "https://github.com/jayhxmo/sketch-camera-hotkeys",
+	"version": "1.0",
+	"identifier": "io.jaymo.sketch-camera-hotkeys",
+	"compatibleVersion": 3,
+	"bundleVersion": 1,
+	"icon": "icon.png",
+	"commands": [
+		{ "script": "Helpers.js" },
+		{
+			"name": "Center Camera on Selection",
+			"identifier": "sketch-camera-hotkeys.center-camera-on-selection-identifier",
+			"script": "center-camera-on-selection.js",
+			"shortcut": "ctrl d"
+		},
+		{
+			"name": "Follow Camera on Selection",
+			"identifier": "sketch-camera-hotkeys.follow-camera-on-selection-identifier",
+			"script": "follow-camera-on-selection.js",
+			"shortcut": "ctrl shift d",
+			"handlers": { "run": "default", "actions": { "SelectionChanged.finish": "onSelectionChange" } }
+		},
+		{
+			"name": "Create Camera Location 1",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-1-identifier",
+			"script": "camera/create-camera-location-1.js",
+			"shortcut": "ctrl shift 1"
+		},
+		{
+			"name": "Create Camera Location 2",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-2-identifier",
+			"script": "camera/create-camera-location-2.js",
+			"shortcut": "ctrl shift 2"
+		},
+		{
+			"name": "Create Camera Location 3",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-3-identifier",
+			"script": "camera/create-camera-location-3.js",
+			"shortcut": "ctrl shift 3"
+		},
+		{
+			"name": "Create Camera Location 4",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-4-identifier",
+			"script": "camera/create-camera-location-4.js",
+			"shortcut": "ctrl shift 4"
+		},
+		{
+			"name": "Create Camera Location 5",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-5-identifier",
+			"script": "camera/create-camera-location-5.js",
+			"shortcut": "ctrl shift 5"
+		},
+		{
+			"name": "Create Camera Location 6",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-6-identifier",
+			"script": "camera/create-camera-location-6.js",
+			"shortcut": "ctrl shift 6"
+		},
+		{
+			"name": "Create Camera Location 7",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-7-identifier",
+			"script": "camera/create-camera-location-7.js",
+			"shortcut": "ctrl shift 7"
+		},
+		{
+			"name": "Create Camera Location 8",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-8-identifier",
+			"script": "camera/create-camera-location-8.js",
+			"shortcut": "ctrl shift 8"
+		},
+		{
+			"name": "Create Camera Location 9",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-9-identifier",
+			"script": "camera/create-camera-location-9.js",
+			"shortcut": "ctrl shift 9"
+		},
+		{
+			"name": "Create Camera Location 10",
+			"identifier": "sketch-camera-hotkeys.create-camera-location-10-identifier",
+			"script": "camera/create-camera-location-10.js",
+			"shortcut": "ctrl shift 0"
+		},
+		{
+			"name": "Jump to Camera Location 1",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-1-identifier",
+			"script": "camera/jump-to-camera-location-1.js",
+			"shortcut": "ctrl 1"
+		},
+		{
+			"name": "Jump to Camera Location 2",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-2-identifier",
+			"script": "camera/jump-to-camera-location-2.js",
+			"shortcut": "ctrl 2"
+		},
+		{
+			"name": "Jump to Camera Location 3",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-3-identifier",
+			"script": "camera/jump-to-camera-location-3.js",
+			"shortcut": "ctrl 3"
+		},
+		{
+			"name": "Jump to Camera Location 4",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-4-identifier",
+			"script": "camera/jump-to-camera-location-4.js",
+			"shortcut": "ctrl 4"
+		},
+		{
+			"name": "Jump to Camera Location 5",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-5-identifier",
+			"script": "camera/jump-to-camera-location-5.js",
+			"shortcut": "ctrl 5"
+		},
+		{
+			"name": "Jump to Camera Location 6",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-6-identifier",
+			"script": "camera/jump-to-camera-location-6.js",
+			"shortcut": "ctrl 6"
+		},
+		{
+			"name": "Jump to Camera Location 7",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-7-identifier",
+			"script": "camera/jump-to-camera-location-7.js",
+			"shortcut": "ctrl 7"
+		},
+		{
+			"name": "Jump to Camera Location 8",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-8-identifier",
+			"script": "camera/jump-to-camera-location-8.js",
+			"shortcut": "ctrl 8"
+		},
+		{
+			"name": "Jump to Camera Location 9",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-9-identifier",
+			"script": "camera/jump-to-camera-location-9.js",
+			"shortcut": "ctrl 9"
+		},
+		{
+			"name": "Jump to Camera Location 10",
+			"identifier": "sketch-camera-hotkeys.jump-to-camera-location-10-identifier",
+			"script": "camera/jump-to-camera-location-10.js",
+			"shortcut": "ctrl 0"
+		}
+	],
+	"menu": {
+		"title": "Camera Hotkeys",
+		"items": [
+			"sketch-camera-hotkeys.center-camera-on-selection-identifier",
+			"sketch-camera-hotkeys.follow-camera-on-selection-identifier",
+			"-",
+			"sketch-camera-hotkeys.create-camera-location-1-identifier",
+			"sketch-camera-hotkeys.create-camera-location-2-identifier",
+			"sketch-camera-hotkeys.create-camera-location-3-identifier",
+			"sketch-camera-hotkeys.create-camera-location-4-identifier",
+			"sketch-camera-hotkeys.create-camera-location-5-identifier",
+			"sketch-camera-hotkeys.create-camera-location-6-identifier",
+			"sketch-camera-hotkeys.create-camera-location-7-identifier",
+			"sketch-camera-hotkeys.create-camera-location-8-identifier",
+			"sketch-camera-hotkeys.create-camera-location-9-identifier",
+			"sketch-camera-hotkeys.create-camera-location-10-identifier",
+			"-",
+			"sketch-camera-hotkeys.jump-to-camera-location-1-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-2-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-3-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-4-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-5-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-6-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-7-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-8-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-9-identifier",
+			"sketch-camera-hotkeys.jump-to-camera-location-10-identifier"
+		]
+	}
+}
