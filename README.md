@@ -1,6 +1,6 @@
 # sketch-camera-hotkeys
 As a competitive StarCraft 2 player (a mechanically very demanding game), I was frustrated with how inefficient navigating around while designing was. I don't expect many people to find this useful, but I made it because:
-1. I wanted to use it for myself (this is direct port from SC2, but with non-conflicting hotkeys)
+1. I wanted to use it for myself (this is a direct port from SC2, but with non-conflicting hotkeys)
 2. I wanted to learn how to create Sketch plugins
 
 
