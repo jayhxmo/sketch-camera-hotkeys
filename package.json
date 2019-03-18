@@ -1,6 +1,12 @@
 {
   "name": "sketch-camera-hotkeys",
-  "version": "0.1.0",
+  "description": "Navigate around and present more efficiently",
+  "version": "1.0.0",
+  "author": "Jay Mo",
+  "email": "jay@jaymo.io",
+  "homepage": "https://github.com/jayhxmo/sketch-camera-hotkeys",
+  "repository": "https://github.com/jayhxmo/sketch-camera-hotkeys",
+  "license": "MIT",
   "engines": {
     "sketch": ">=3.0"
   },

@@ -4,7 +4,7 @@
   "author": "Jay Mo",
   "authorEmail": "jay@jaymo.io",
   "homepage": "https://github.com/jayhxmo/sketch-camera-hotkeys",
-  "version": "1.0",
+  "version": "1.0.0",
   "identifier": "io.jaymo.sketch-camera-hotkeys",
   "compatibleVersion": 3,
   "bundleVersion": 1,
@@ -182,5 +182,5 @@
     ]
   },
   "disableCocoaScriptPreprocessor": true,
-  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml"
+  "appcast": "https://raw.githubusercontent.com/jayhxmo/sketch-camera-hotkeys/master/.appcast.xml"
 }
