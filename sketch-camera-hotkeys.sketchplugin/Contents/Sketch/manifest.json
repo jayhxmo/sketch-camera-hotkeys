@@ -125,6 +125,18 @@
     },
     {
       "script": "Helpers.js"
+    },
+    {
+      "name": "Center Camera on Selection",
+      "identifier": "sketch-camera-hotkeys.center-camera-on-selection-identifier",
+      "script": "center-camera-on-selection.js",
+      "shortcut": "ctrl d"
+    },
+    {
+      "name": "Follow Camera on Selection",
+      "identifier": "sketch-camera-hotkeys.follow-camera-on-selection-identifier",
+      "script": "follow-camera-on-selection.js",
+      "shortcut": "ctrl shift d"
     }
   ],
   "menu": {
@@ -149,7 +161,10 @@
       "sketch-camera-hotkeys.jump-to-camera-location-7-identifier",
       "sketch-camera-hotkeys.jump-to-camera-location-8-identifier",
       "sketch-camera-hotkeys.jump-to-camera-location-9-identifier",
-      "sketch-camera-hotkeys.jump-to-camera-location-10-identifier"
+      "sketch-camera-hotkeys.jump-to-camera-location-10-identifier",
+      "-",
+      "sketch-camera-hotkeys.center-camera-on-selection-identifier",
+      "sketch-camera-hotkeys.follow-camera-on-selection-identifier"
     ]
   },
   "version": "0.1.0",

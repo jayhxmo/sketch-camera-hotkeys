@@ -128,12 +128,13 @@ var CreateCamera = function CreateCamera(context, index) {
 /*!************************!*\
   !*** ./src/Helpers.js ***!
   \************************/
-/*! exports provided: getCurrentView */
+/*! exports provided: getCurrentView, getSelectionCoordinates */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentView", function() { return getCurrentView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectionCoordinates", function() { return getSelectionCoordinates; });
 var getCurrentView = function getCurrentView(doc) {
   if (doc.currentView) {
     return doc.currentView();
@@ -143,6 +144,43 @@ var getCurrentView = function getCurrentView(doc) {
 
   log('ERROR: Can not get currentView');
   return null;
+};
+var getSelectionCoordinates = function getSelectionCoordinates(selection) {
+  var coordinates = {
+    x1: undefined,
+    y2: undefined,
+    x2: undefined,
+    ["y2"]: undefined
+  };
+
+  for (var i = 0; i < selection.length; i++) {
+    var absoluteRect = selection[i].absoluteRect();
+
+    if (i == 0) {
+      coordinates.x1 = absoluteRect.x();
+      coordinates.y1 = absoluteRect.y();
+      coordinates.x2 = absoluteRect.x() + absoluteRect.width();
+      coordinates.y2 = absoluteRect.y() + absoluteRect.height();
+    }
+
+    if (coordinates.x1 > absoluteRect.x()) {
+      coordinates.x1 = absoluteRect.x();
+    }
+
+    if (coordinates.y1 > absoluteRect.y()) {
+      coordinates.y1 = absoluteRect.y();
+    }
+
+    if (coordinates.x2 < absoluteRect.x() + absoluteRect.width()) {
+      coordinates.x2 = absoluteRect.x() + absoluteRect.width();
+    }
+
+    if (coordinates.y2 < absoluteRect.y() + absoluteRect.height()) {
+      coordinates.y2 = absoluteRect.y() + absoluteRect.height();
+    }
+  }
+
+  return coordinates;
 };
 
 /***/ }),

@@ -10,7 +10,7 @@ export const JumpToCamera = function(context, index) {
 		cameraZoom = context.document.zoomValue();
 
 	if (cameraSave == null) {
-		sketch.UI.message(`Camera Location ${index} has not been created`);
+		sketch.UI.message(`Camera Location ${index} Has Not Been Created`);
 	} else {
 		// Set page before camera position
 		const pages = context.document.pages();

@@ -39,6 +39,26 @@ for (let i = 1; i <= 20; i++) {
 }
 
 cameraCommands.push({ script: 'Helpers.js' });
+menuItems.push('-');
+
+cameraCommands.push({
+  name: 'Center Camera on Selection',
+  identifier: 'sketch-camera-hotkeys.center-camera-on-selection-identifier',
+  script: `center-camera-on-selection.js`,
+  shortcut: `ctrl d`
+});
+menuItems.push('sketch-camera-hotkeys.center-camera-on-selection-identifier');
+
+cameraCommands.push({
+  name: 'Follow Camera on Selection',
+  identifier: 'sketch-camera-hotkeys.follow-camera-on-selection-identifier',
+  script: `follow-camera-on-selection.js`,
+  shortcut: `ctrl shift d`
+});
+menuItems.push('sketch-camera-hotkeys.follow-camera-on-selection-identifier');
+
+console.log(cameraCommands);
+console.log(menuItems);
 
 // console.log(cameraCommands);
 // console.log(menuItems);

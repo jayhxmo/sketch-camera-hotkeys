@@ -86,43 +86,10 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/camera/create-camera-location-2.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/center-camera-on-selection.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./src/CreateCamera.js":
-/*!*****************************!*\
-  !*** ./src/CreateCamera.js ***!
-  \*****************************/
-/*! exports provided: CreateCamera */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateCamera", function() { return CreateCamera; });
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
-
-
-var CreateCamera = function CreateCamera(context, index) {
-  var camera = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.document).visibleContentRect();
-  var midpointX = camera.size.width / 2 + camera.origin.x,
-      midpointY = camera.size.height / 2 + camera.origin.y,
-      zoomValue = context.document.zoomValue();
-  var location = {
-    x: midpointX,
-    y: midpointY,
-    zoom: zoomValue,
-    width: camera.size.width / 2,
-    pageID: context.document.documentData().currentPage().objectID()
-  };
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.setDocumentSettingForKey(context.document, "camera-location-".concat(index), location);
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Created Camera Location ".concat(index));
-};
-
-/***/ }),
 
 /***/ "./src/Helpers.js":
 /*!************************!*\
@@ -185,19 +152,32 @@ var getSelectionCoordinates = function getSelectionCoordinates(selection) {
 
 /***/ }),
 
-/***/ "./src/camera/create-camera-location-2.js":
-/*!************************************************!*\
-  !*** ./src/camera/create-camera-location-2.js ***!
-  \************************************************/
+/***/ "./src/center-camera-on-selection.js":
+/*!*******************************************!*\
+  !*** ./src/center-camera-on-selection.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CreateCamera__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../CreateCamera */ "./src/CreateCamera.js");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function (context) {
-  Object(_CreateCamera__WEBPACK_IMPORTED_MODULE_0__["CreateCamera"])(context, 2);
+  var currentView = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.document);
+
+  if (context.selection.length == 0) {
+    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("No Layer Selected");
+  } else {
+    var coordinates = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getSelectionCoordinates"](context.selection),
+        camera = currentView.visibleContentRect();
+    var cameraDest = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Rectangle((coordinates.x2 - coordinates.x1) / 2 + coordinates.x1 - camera.size.width / 2, (coordinates.y2 - coordinates.y1) / 2 + coordinates.y1 - camera.size.height / 2, camera.size.width, camera.size.height).asCGRect();
+    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Centered to Selection");
+    currentView.zoomToFitRect(cameraDest);
+  }
 });
 
 /***/ }),
@@ -222,4 +202,4 @@ module.exports = require("sketch");
 }
 that['onRun'] = __skpm_run.bind(this, 'default')
 
-//# sourceMappingURL=create-camera-location-2.js.map
+//# sourceMappingURL=center-camera-on-selection.js.map

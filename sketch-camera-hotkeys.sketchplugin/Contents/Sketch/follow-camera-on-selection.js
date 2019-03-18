@@ -86,15 +86,76 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/save-camera-1.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/follow-camera-on-selection.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/save-camera-1.js":
-/*!******************************!*\
-  !*** ./src/save-camera-1.js ***!
-  \******************************/
+/***/ "./src/Helpers.js":
+/*!************************!*\
+  !*** ./src/Helpers.js ***!
+  \************************/
+/*! exports provided: getCurrentView, getSelectionCoordinates */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentView", function() { return getCurrentView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectionCoordinates", function() { return getSelectionCoordinates; });
+var getCurrentView = function getCurrentView(doc) {
+  if (doc.currentView) {
+    return doc.currentView();
+  } else if (doc.contentDrawView) {
+    return doc.contentDrawView();
+  }
+
+  log('ERROR: Can not get currentView');
+  return null;
+};
+var getSelectionCoordinates = function getSelectionCoordinates(selection) {
+  var coordinates = {
+    x1: undefined,
+    y2: undefined,
+    x2: undefined,
+    ["y2"]: undefined
+  };
+
+  for (var i = 0; i < selection.length; i++) {
+    var absoluteRect = selection[i].absoluteRect();
+
+    if (i == 0) {
+      coordinates.x1 = absoluteRect.x();
+      coordinates.y1 = absoluteRect.y();
+      coordinates.x2 = absoluteRect.x() + absoluteRect.width();
+      coordinates.y2 = absoluteRect.y() + absoluteRect.height();
+    }
+
+    if (coordinates.x1 > absoluteRect.x()) {
+      coordinates.x1 = absoluteRect.x();
+    }
+
+    if (coordinates.y1 > absoluteRect.y()) {
+      coordinates.y1 = absoluteRect.y();
+    }
+
+    if (coordinates.x2 < absoluteRect.x() + absoluteRect.width()) {
+      coordinates.x2 = absoluteRect.x() + absoluteRect.width();
+    }
+
+    if (coordinates.y2 < absoluteRect.y() + absoluteRect.height()) {
+      coordinates.y2 = absoluteRect.y() + absoluteRect.height();
+    }
+  }
+
+  return coordinates;
+};
+
+/***/ }),
+
+/***/ "./src/follow-camera-on-selection.js":
+/*!*******************************************!*\
+  !*** ./src/follow-camera-on-selection.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -102,11 +163,10 @@ var exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
- // documentation: https://developer.sketchapp.com/reference/api/
+/* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
 
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("camera hotkey saved 1 !");
-});
+
+/* harmony default export */ __webpack_exports__["default"] = (function (context) {});
 
 /***/ }),
 
@@ -130,4 +190,4 @@ module.exports = require("sketch");
 }
 that['onRun'] = __skpm_run.bind(this, 'default')
 
-//# sourceMappingURL=save-camera-1.js.map
+//# sourceMappingURL=follow-camera-on-selection.js.map
