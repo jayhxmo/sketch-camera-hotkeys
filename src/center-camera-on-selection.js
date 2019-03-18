@@ -5,7 +5,7 @@ export default function(context) {
 	const currentView = Helpers.getCurrentView(context.document);
 
 	if (context.selection.length == 0) {
-		sketch.UI.message(`No Layer Selected`);
+		sketch.UI.message(`No Target Selected`);
 	} else {
 		const coordinates = Helpers.getSelectionCoordinates(context.selection),
 			camera = currentView.visibleContentRect();

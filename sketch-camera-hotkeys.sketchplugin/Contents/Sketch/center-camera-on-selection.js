@@ -170,7 +170,7 @@ __webpack_require__.r(__webpack_exports__);
   var currentView = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.document);
 
   if (context.selection.length == 0) {
-    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("No Layer Selected");
+    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("No Target Selected");
   } else {
     var coordinates = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getSelectionCoordinates"](context.selection),
         camera = currentView.visibleContentRect();

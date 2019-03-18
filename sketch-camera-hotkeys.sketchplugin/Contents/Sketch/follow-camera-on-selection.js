@@ -156,17 +156,48 @@ var getSelectionCoordinates = function getSelectionCoordinates(selection) {
 /*!*******************************************!*\
   !*** ./src/follow-camera-on-selection.js ***!
   \*******************************************/
-/*! exports provided: default */
+/*! exports provided: default, onSelectionChange */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onSelectionChange", function() { return onSelectionChange; });
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpers */ "./src/Helpers.js");
 
 
-/* harmony default export */ __webpack_exports__["default"] = (function (context) {});
+/* harmony default export */ __webpack_exports__["default"] = (function (context) {
+  var isFollowing = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.documentSettingForKey(context.document, 'follow-camera-on-selection');
+  sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.setDocumentSettingForKey(context.document, 'follow-camera-on-selection', !isFollowing);
+
+  if (!isFollowing) {
+    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("\u2705 Camera Now Following Selection");
+    centerSelectionZoomedOut(context.document, context.selection);
+  } else {
+    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("\u274C Stop Camera Follow");
+  }
+});
+function onSelectionChange(context) {
+  if (sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Settings.documentSettingForKey(context.actionContext.document, 'follow-camera-on-selection')) {
+    var currentView = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](context.actionContext.document);
+    centerSelectionZoomedOut(context.actionContext.document, context.actionContext.newSelection);
+  }
+}
+
+function centerSelectionZoomedOut(doc, selection) {
+  var currentView = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getCurrentView"](doc);
+
+  if (selection.length == 0) {// sketch.UI.message(`No Target Selected`);
+  } else {
+    var coordinates = _Helpers__WEBPACK_IMPORTED_MODULE_1__["getSelectionCoordinates"](selection),
+        camera = currentView.visibleContentRect();
+    var width = coordinates.x2 - coordinates.x1,
+        height = coordinates.y2 - coordinates.y1;
+    var cameraDest = new sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Rectangle(coordinates.x1 - width * 0.1, coordinates.y1 - height * 0.1, width * 1.2, height * 1.2).asCGRect();
+    currentView.zoomToFitRect(cameraDest);
+  }
+}
 
 /***/ }),
 
@@ -188,6 +219,8 @@ module.exports = require("sketch");
     exports[key](context);
   }
 }
+that['default'] = __skpm_run.bind(this, 'default');
+that['onSelectionChange'] = __skpm_run.bind(this, 'onSelectionChange');
 that['onRun'] = __skpm_run.bind(this, 'default')
 
 //# sourceMappingURL=follow-camera-on-selection.js.map

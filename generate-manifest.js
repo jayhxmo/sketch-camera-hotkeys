@@ -29,17 +29,7 @@ function templateJump(index) {
 let cameraCommands = [],
   menuItems = [];
 
-for (let i = 1; i <= 20; i++) {
-  let commandBlock;
-  if (i <= 10) commandBlock = templateCreate(i);
-  else commandBlock = templateJump(i - 10);
-
-  cameraCommands.push(commandBlock.command);
-  menuItems.push(commandBlock.identifier);
-}
-
 cameraCommands.push({ script: 'Helpers.js' });
-menuItems.push('-');
 
 cameraCommands.push({
   name: 'Center Camera on Selection',
@@ -53,23 +43,45 @@ cameraCommands.push({
   name: 'Follow Camera on Selection',
   identifier: 'sketch-camera-hotkeys.follow-camera-on-selection-identifier',
   script: `follow-camera-on-selection.js`,
-  shortcut: `ctrl shift d`
+  shortcut: `ctrl shift d`,
+  handlers: {
+    run: 'default',
+    actions: {
+      'SelectionChanged.finish': 'onSelectionChange'
+    }
+  }
 });
 menuItems.push('sketch-camera-hotkeys.follow-camera-on-selection-identifier');
+menuItems.push('-');
 
-console.log(cameraCommands);
-console.log(menuItems);
+for (let i = 1; i <= 20; i++) {
+  let commandBlock;
+  if (i <= 10) commandBlock = templateCreate(i);
+  else commandBlock = templateJump(i - 10);
+
+  cameraCommands.push(commandBlock.command);
+  menuItems.push(commandBlock.identifier);
+
+  if (i == 10) menuItems.push('-');
+}
 
 // console.log(cameraCommands);
 // console.log(menuItems);
 
 let manifestTemplate = {
+  name: 'Camera Hotkeys',
+  description: 'Navigate around and present more efficiently',
+  author: 'Jay Mo',
+  authorEmail: 'jay@jaymo.io',
+  homepage: 'https://github.com/jayhxmo/sketch-camera-hotkeys',
+  version: '1.0',
+  identifier: 'io.jaymo.sketch-camera-hotkeys',
   compatibleVersion: 3,
   bundleVersion: 1,
   icon: 'icon.png',
   commands: cameraCommands,
   menu: {
-    title: 'sketch-camera-hotkeys',
+    title: 'Camera Hotkeys',
     items: menuItems
   }
 };
